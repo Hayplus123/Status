@@ -31,10 +31,6 @@ onValue(statusRef, (snapshot) => {
     clearInterval(loadingAnimation);
     if (countdownInterval) clearInterval(countdownInterval);
 
-    // Check if a custom message was typed; otherwise use the dropdown selection
-    const customMsg = document.getElementById('custom-message-input').value.trim();
-    const dropdownMsg = document.getElementById('message-select').value;
-    const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
     const container = document.getElementById('status-container');
     const msgEl = document.getElementById('status-message');
     const timerEl = document.getElementById('timer-display');
@@ -61,7 +57,7 @@ onValue(statusRef, (snapshot) => {
       container.style.backgroundColor = "#f8d7da";
       container.style.borderColor = "#f5c6cb"; // Red lockdown screen
       statusText.innerText = "SYSTEM DOWN";
-      msgEl.innerText = "sorry, we are having a maitness break at the moment. " + (data.message ? "(" + data.message + ")" : "");
+      msgEl.innerText = "sorry, we are having a maintenance break at the moment. " + (data.message ? "(" + data.message + ")" : "");
 
       // Live Countdown Timer logic
       if (data.targetTime) {

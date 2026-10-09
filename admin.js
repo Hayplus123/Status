@@ -37,7 +37,6 @@ document.getElementById('state-input').addEventListener('change', (e) => {
   }
 });
 
-
 // Update Button Logic
 document.getElementById('update-btn').addEventListener('click', () => {
   const newState = document.getElementById('state-input').value;
@@ -46,14 +45,6 @@ document.getElementById('update-btn').addEventListener('click', () => {
   const customMsg = document.getElementById('custom-message-input').value.trim();
   const dropdownMsg = document.getElementById('message-input').value;
   const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
-
-  // (Your downtime and Firebase set() logic goes right down here...)
-});
-  
-  // Rest of your update logic follows..
-  const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
-  const newState = document.getElementById('state-input').value;
-  const newMessage = document.getElementById('message-input').value;
   
   // Clear any existing 1-minute updater interval
   if (maintenanceInterval) clearInterval(maintenanceInterval);
