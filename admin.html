@@ -31,7 +31,16 @@
     </select>
 
     <label>Detailed Message:</label>
-    <input type="text" id="message-input" placeholder="e.g., All systems running normally." />
+    <select id="message-input">
+  <option value="idle">idle</option>
+  <option value="loading">loading</option>
+  <option value="logging in">logging in</option>
+  <option value="waiting for reply">waiting for reply</option>
+  <option value="unexpected delay">unexpected delay</option>
+  <option value="working on it">working on it</option>
+  <option value="the server is busy at the moment. Please wait">the server is busy at the moment. Please wait</option>
+  <option value="on hold">on hold</option>
+</select>
 
     <button id="update-btn">Update Website</button>
   </div>
