@@ -50,7 +50,7 @@ document.getElementById('update-btn').addEventListener('click', () => {
   // (Your downtime and Firebase set() logic goes right down here...)
 });
   
-  // Rest of your update logic follows...
+  // Rest of your update logic follows..
   const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
   const newState = document.getElementById('state-input').value;
   const newMessage = document.getElementById('message-input').value;
