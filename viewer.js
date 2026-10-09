@@ -57,7 +57,7 @@ onValue(statusRef, (snapshot) => {
       container.style.backgroundColor = "#f8d7da";
       container.style.borderColor = "#f5c6cb"; // Red lockdown screen
       statusText.innerText = "SYSTEM DOWN";
-      msgEl.innerText = "sorry, we are having a maintenance break at the moment. " + (data.message ? "(" + data.message + ")" : "");
+      msgEl.innerText = "sorry, we are having a maintenance break at the moment. ";
 
       // Live Countdown Timer logic
       if (data.targetTime) {
