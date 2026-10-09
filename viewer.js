@@ -14,28 +14,67 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// Setup the . .. ... animation
+// Loading Animation (. .. ...)
 const statusText = document.getElementById('status-text');
 let dotCount = 0;
 const loadingAnimation = setInterval(() => {
-  dotCount = (dotCount + 1) % 4; // Cycles through 0, 1, 2, 3
+  dotCount = (dotCount + 1) % 4;
   statusText.innerText = "Loading" + ".".repeat(dotCount);
-}, 500); // Updates every half second
+}, 500);
 
-// Listen for changes to the status data
+let countdownInterval = null;
+
 const statusRef = ref(db, 'systemInfo');
 onValue(statusRef, (snapshot) => {
   const data = snapshot.val();
   if (data) {
-    clearInterval(loadingAnimation); // Stop the dots once data arrives
-    
-    document.getElementById('status-text').innerText = data.state;
-    document.getElementById('status-message').innerText = data.message;
-    
-    // Change background color based on status
+    clearInterval(loadingAnimation);
+    if (countdownInterval) clearInterval(countdownInterval);
+
     const container = document.getElementById('status-container');
-    if (data.state === "Operational") container.style.backgroundColor = "#d4edda";
-    else if (data.state === "Issues") container.style.backgroundColor = "#fff3cd";
-    else container.style.backgroundColor = "#f8d7da";
+    const msgEl = document.getElementById('status-message');
+    const timerEl = document.getElementById('timer-display');
+    
+    timerEl.innerText = ""; // Clear old timer
+
+    if (data.state === "Operational") {
+      document.body.style.backgroundColor = "#ffffff";
+      container.style.backgroundColor = "#d4edda";
+      container.style.borderColor = "#c3e6cb";
+      statusText.innerText = "System Operational";
+      msgEl.innerText = data.message || "All systems running normally.";
+    } 
+    else if (data.state === "Issues") {
+      document.body.style.backgroundColor = "#fff9db";
+      container.style.backgroundColor = "#fff3cd";
+      container.style.borderColor = "#ffeeba"; // Yellow border screen
+      statusText.innerText = "Minor Issues Detected";
+      msgEl.innerText = data.message || "Experiencing degraded performance.";
+    } 
+    else if (data.state === "Down") {
+      // Freeze screen and show lockdown error
+      document.body.style.backgroundColor = "#ffdddd";
+      container.style.backgroundColor = "#f8d7da";
+      container.style.borderColor = "#f5c6cb"; // Red lockdown screen
+      statusText.innerText = "SYSTEM DOWN";
+      msgEl.innerText = "sorry, we are having a maitness break at the moment. " + (data.message ? "(" + data.message + ")" : "");
+
+      // Live Countdown Timer logic
+      if (data.targetTime) {
+        const updateTimer = () => {
+          const timeLeft = data.targetTime - Date.now();
+          if (timeLeft <= 0) {
+            timerEl.innerText = "Maintenance should conclude momentarily.";
+            clearInterval(countdownInterval);
+          } else {
+            const minutes = Math.floor(timeLeft / 60000);
+            const seconds = Math.floor((timeLeft % 60000) / 1000);
+            timerEl.innerText = `Estimated time remaining: ${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
+          }
+        };
+        updateTimer();
+        countdownInterval = setInterval(updateTimer, 1000); // Ticks every second locally
+      }
+    }
   }
 });

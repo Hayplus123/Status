@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Login</title>
+  <title>Admin Control Panel</title>
   <style>
     body { font-family: sans-serif; padding: 20px; }
     input, select, button { margin: 10px 0; padding: 10px; display: block; width: 300px; }
-    #admin-section { display: none; } /* Hides the admin panel initially */
+    #admin-section { display: none; }
+    #downtime-box { display: none; background: #ffeeee; padding: 10px; border-radius: 5px; width: 300px; }
   </style>
 </head>
 <body>
@@ -23,24 +24,21 @@
   <div id="admin-section">
     <h2>Admin Control Panel</h2>
     
-    <label>Current Status:</label>
+    <label>Detailed Status:</label>
     <select id="state-input">
       <option value="Operational">Operational (Green)</option>
       <option value="Issues">Minor Issues (Yellow)</option>
-      <option value="Down">System Down (Red)</option>
+      <option value="Down">System Down (Red - Lockdown)</option>
     </select>
 
-    <label>Detailed Message:</label>
-    <select id="message-input">
-  <option value="idle">idle</option>
-  <option value="loading">loading</option>
-  <option value="logging in">logging in</option>
-  <option value="waiting for reply">waiting for reply</option>
-  <option value="unexpected delay">unexpected delay</option>
-  <option value="working on it">working on it</option>
-  <option value="the server is busy at the moment. Please wait">the server is busy at the moment. Please wait</option>
-  <option value="on hold">on hold</option>
-</select>
+    <label>Detailed Message (Type any custom message):</label>
+    <input type="text" id="message-input" placeholder="e.g., working on it, server busy..." />
+
+    <!-- Appears only when Down is selected -->
+    <div id="downtime-box">
+      <label>Estimated Downtime (Minutes):</label>
+      <input type="number" id="minutes-input" value="15" min="1" />
+    </div>
 
     <button id="update-btn">Update Website</button>
   </div>
