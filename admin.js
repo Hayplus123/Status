@@ -37,15 +37,18 @@ document.getElementById('state-input').addEventListener('change', (e) => {
   }
 });
 
+
 // Update Button Logic
 document.getElementById('update-btn').addEventListener('click', () => {
-  document.getElementById('update-btn').addEventListener('click', () => {
   const newState = document.getElementById('state-input').value;
   
   // Check if a custom message was typed; otherwise use the dropdown selection
   const customMsg = document.getElementById('custom-message-input').value.trim();
   const dropdownMsg = document.getElementById('message-input').value;
   const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
+
+  // (Your downtime and Firebase set() logic goes right down here...)
+});
   
   // Rest of your update logic follows...
   const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
