@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Status</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    .status-box { padding: 20px; border-radius: 10px; display: inline-block; }
+  </style>
+</head>
+<body>
+  <h1>Current System Status</h1>
+  <div class="status-box" id="status-container">
+    <h2 id="status-text">Loading...</h2>
+    <p id="status-message">Fetching latest updates from server.</p>
+  </div>
+
+  <!-- Notice we renamed app.js to viewer.js -->
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

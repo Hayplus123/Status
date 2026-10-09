@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input, select, button { margin: 10px 0; padding: 10px; display: block; width: 300px; }
+    #admin-section { display: none; } /* Hides the admin panel initially */
+  </style>
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div id="login-section">
+    <h2>Admin Login</h2>
+    <input type="password" id="password-input" placeholder="Enter password" />
+    <button id="login-btn">Access Controls</button>
+  </div>
+
+  <!-- Hidden Admin Controls -->
+  <div id="admin-section">
+    <h2>Admin Control Panel</h2>
+    
+    <label>Current Status:</label>
+    <select id="state-input">
+      <option value="Operational">Operational (Green)</option>
+      <option value="Issues">Minor Issues (Yellow)</option>
+      <option value="Down">System Down (Red)</option>
+    </select>
+
+    <label>Detailed Message:</label>
+    <input type="text" id="message-input" placeholder="e.g., All systems running normally." />
+
+    <button id="update-btn">Update Website</button>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
