@@ -21,6 +21,18 @@
   </div>
 
   <!-- Hidden Admin Controls -->
+   <!-- Add this right below your Update Website button -->
+    <div id="live-status-box" style="margin-top: 30px; padding: 15px; background: #f8f9fa; border: 2px solid #ccc; border-radius: 5px; width: 290px;">
+      <h3 style="margin-top: 0; font-size: 1.1em;">Live Database Status</h3>
+      <p style="margin: 5px 0;"><strong>State:</strong> <span id="current-state-text">Fetching...</span></p>
+      <p id="admin-timer-display" style="color: red; font-weight: bold; margin: 5px 0;"></p>
+    </div>
+
+  </div> <!-- End of admin-section -->
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
   <div id="admin-section">
     <h2>Admin Control Panel</h2>
     
