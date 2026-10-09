@@ -52,7 +52,6 @@ document.getElementById('update-btn').addEventListener('click', () => {
   
   // Rest of your update logic follows...
   const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
-  const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
   const newState = document.getElementById('state-input').value;
   const newMessage = document.getElementById('message-input').value;
   
