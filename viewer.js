@@ -31,6 +31,10 @@ onValue(statusRef, (snapshot) => {
     clearInterval(loadingAnimation);
     if (countdownInterval) clearInterval(countdownInterval);
 
+    // Check if a custom message was typed; otherwise use the dropdown selection
+    const customMsg = document.getElementById('custom-message-input').value.trim();
+    const dropdownMsg = document.getElementById('message-select').value;
+    const newMessage = customMsg !== "" ? customMsg : dropdownMsg;
     const container = document.getElementById('status-container');
     const msgEl = document.getElementById('status-message');
     const timerEl = document.getElementById('timer-display');
