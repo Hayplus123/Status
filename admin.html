@@ -32,8 +32,7 @@
     </select>
 
     <label>Detailed Message (Prewritten Status):</label>
-    <select id="message-select">
-      <option value="">-- Choose prewritten status --</option>
+    <select id="message-input">
       <option value="idle">idle</option>
       <option value="loading">loading</option>
       <option value="logging in">logging in</option>
@@ -43,6 +42,9 @@
       <option value="the server is busy at the moment. Please wait">the server is busy at the moment. Please wait</option>
       <option value="on hold">on hold</option>
     </select>
+
+    <label>Or Type a Custom Message:</label>
+    <input type="text" id="custom-message-input" placeholder="Type a custom message here..." />
 
     <label>Or Type a Custom Message:</label>
     <input type="text" id="custom-message-input" placeholder="Type a custom message here..." />
